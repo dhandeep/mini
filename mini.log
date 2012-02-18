@@ -1,0 +1,393 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=latex 2011.4.16)  18 APR 2011 11:41
+entering extended mode
+ %&-line parsing enabled.
+**mini.tex
+(./mini.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texmf-texlive/tex/latex/base/size12.clo
+File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (./projreport.sty
+(/usr/share/texmf-texlive/tex/latex/geometry/geometry.sty
+Package: geometry 2008/12/21 v4.2 Page Geometry
+
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2009/04/10 v2.0 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode not detected.
+)
+(/usr/share/texmf-texlive/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2008/11/04 v1.4 Switches for detecting VTeX and its modes (HO)
+Package ifvtex Info: VTeX not detected.
+)
+\Gm@cnth=\count87
+\Gm@cntv=\count88
+\c@Gm@tempcnt=\count89
+\Gm@bindingoffset=\dimen103
+\Gm@wd@mp=\dimen104
+\Gm@odd@mp=\dimen105
+\Gm@even@mp=\dimen106
+\Gm@dimlist=\toks15
+))
+(/usr/share/texmf-texlive/tex/latex/tools/enumerate.sty
+Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+\@enLab=\toks16
+)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texmf-texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen107
+\Gin@req@width=\dimen108
+) (./mini.aux)
+\openout1 = `mini.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+
+*geometry auto-detecting driver*
+*geometry detected driver: dvips*
+-------------------- Geometry parameters
+paper: a4paper
+landscape: --
+twocolumn: --
+twoside: --
+asymmetric: --
+h-parts: 56.9055pt, 483.69687pt, 56.9055pt
+v-parts: 85.35826pt, 717.00946pt, 42.67912pt
+hmarginratio: --
+vmarginratio: --
+lines: --
+heightrounded: --
+bindingoffset: 0.0pt
+truedimen: --
+includehead: --
+includefoot: --
+includemp: --
+driver: dvips
+-------------------- Page layout dimensions and switches
+\paperwidth  597.50787pt
+\paperheight 845.04684pt
+\textwidth  483.69687pt
+\textheight 717.00946pt
+\oddsidemargin  -15.36449pt
+\evensidemargin -15.36449pt
+\topmargin  -23.91173pt
+\headheight 12.0pt
+\headsep    25.0pt
+\footskip   30.0pt
+\marginparwidth 44.0pt
+\marginparsep   10.0pt
+\columnsep  10.0pt
+\skip\footins  10.8pt plus 4.0pt minus 2.0pt
+\hoffset 0.0pt
+\voffset 0.0pt
+\mag 1000
+
+(1in=72.27pt, 1cm=28.45pt)
+-----------------------
+File: nitclogo.eps Graphic file (type eps)
+<nitclogo.eps> [1
+
+] [2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 38--41
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.43 T
+      he main problems that we focus on are :\\
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--45
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.49 I
+      n this document, we refer to a polynomial ring in n variables as $k[x_...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 49.
+
+Underfull \hbox (badness 10000) in paragraph at lines 49--51
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.63 {
+       \bf Definition 1: }
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--72
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 63--72
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--89
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--89
+
+ []
+
+Missing character: There is no â in font cmbx12!
+Missing character: There is no € in font cmbx12!
+Missing character: There is no ™ in font cmbx12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no ˆ in font cmr12!
+Missing character: There is no ’ in font cmr12!
+
+Overfull \hbox (6.7738pt too wide) in paragraph at lines 90--131
+\OT1/cmr/m/n/12 Without loss of gen-er-al-ity , we may re-name the vari-ables a
+s $\OML/cmm/m/it/12 x[]; x[]; x[]; :::; x[]$ \OT1/cmr/m/n/12 as $\OML/cmm/m/it/
+12 x[]; x[]; x[]; :::; x[]; y$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 90--131
+
+ []
+
+[4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 132--135
+
+ []
+
+Missing character: There is no Î in font cmr8!
+Missing character: There is no ± in font cmr8!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 148--161
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 163--165
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 165.
+
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 165.
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--193
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 194--204
+
+ []
+
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 E
+       very non-zero ideal $I \subset  k[x_{1},x_{2},x_{3},...,x_{n}]$ has a...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Overfull \hbox (15.78035pt too wide) in paragraph at lines 207--212
+\OT1/cmr/m/n/12 Let $\OML/cmm/m/it/12 G \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OM
+L/cmm/m/it/12 g[]; :::; g[]\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 will be a Gr^^?o
+bner ba-sis for $\OML/cmm/m/it/12 I \OMS/cmsy/m/n/12 ^^Z \OML/cmm/m/it/12 k\OT1
+/cmr/m/n/12 [\OML/cmm/m/it/12 x[]; x[]; x[]; :::; x[]\OT1/cmr/m/n/12 ]$ and let
+ $\OML/cmm/m/it/12 f \OMS/cmsy/m/n/12 2 \OML/cmm/m/it/12 k\OT1/cmr/m/n/12 [\OML
+/cmm/m/it/12 x[]; x[]; x[]; :::; x[]\OT1/cmr/m/n/12 ]$
+ []
+
+! Undefined control sequence.
+l.218 $\hspace{30 mm} \therefore
+                                  g-g'=r'-r \in I$\\
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+Overfull \hbox (4.42438pt too wide) in paragraph at lines 216--225
+\OT1/cmr/m/n/12 There is an im-por-tant im-pli-ca-tion of this prop-erty. Its i
+s that for any ideal $\OML/cmm/m/it/12 I \OMS/cmsy/m/n/12 ^^Z \OML/cmm/m/it/12 
+k\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 x[]; x[]; x[]; :::; x[]\OT1/cmr/m/n/12 ]$,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--225
+
+ []
+
+[8]
+Overfull \hbox (1.71738pt too wide) in paragraph at lines 232--233
+[]\OT1/cmr/m/n/12 :- We will write $[][]$ for the re-main-der of f by the or-de
+red s-tuple $\OML/cmm/m/it/12 F \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 f[]; f[]; :
+::; f[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--261
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--270
+
+ []
+
+[9] [10] [11] [12]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--365
+
+ []
+
+[13]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.368 \indent
+              \indent \indent In our project, we have studied about ideals, ...
+
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 370--371
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 372--373
+
+ []
+
+[14]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no ™ in font cmr12!
+ [15] (./mini.aux) ) 
+Here is how much of TeX's memory you used:
+ 1014 strings out of 495062
+ 13172 string characters out of 1182644
+ 74204 words of memory out of 3000000
+ 4222 multiletter control sequences out of 15000+50000
+ 10500 words of font info for 36 fonts, out of 3000000 for 9000
+ 28 hyphenation exceptions out of 8191
+ 30i,8n,21p,552b,404s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on mini.dvi (15 pages, 43356 bytes).

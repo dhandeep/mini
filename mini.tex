@@ -1,0 +1,398 @@
+\documentclass[12pt]{article}
+\usepackage{projreport}
+\linespread{1}
+\usepackage{enumerate}
+\usepackage{graphicx}
+
+\begin{document}
+
+\mprojtopic{Gr\"{o}bner Bases}
+
+\studentnameone{Dhandeep M Lodaya}
+\rollnoone{B080569CS}
+%
+\studentnametwo{Ayush Sengupta}
+\rollnotwo{B080545CS}
+\studentnamethree{Anuj Tawari}
+\rollnothree{B080511CS}
+\studentnamefour{Nitish Gupta}
+\rollnofour{B080616CS}
+%
+\guidesname{Prof.Dr K Muralikrishnan.}
+\hodname{Dr.Priya Chandran}
+\makefrontpage
+\setcounter{page}{2}
+\setcounter{section}{0}
+\pagestyle{plain}
+
+\newpage
+\noindent {\Large \bf ACKNOWLEDGEMENT}\\\\*
+\indent \indent We are highly indebted to our guide Dr.K Muralikrishnan , Assistant Professor, National Institute of Technology, Calicut for his guidance and constant supervision throughout the project. We thank him for his valuable suggestions and guidelines. 
+
+We also like to thank Mr. Sreenu Naik Bhukya, Assistant Professor, National Institute of Technology, Calicut for his guidance and support.
+\newpage
+\noindent {\Large \bf  ABSTRACT}\\\\*
+\indent \indent The aim of the project would be to study the method of Gr\"{o}bner bases, which will allow us to solve problems about polynomial ideals in an algorithmic or computational fashion. it is explicitly used in computing solutions of multivariate polynomial equations.We will also study and analyse algorithms for the construction of Gr\"{o}bner bases from an arbitrary ideal bases, such as Buchburger's algorithm.
+\newpage
+\section{INTRODUCTION}
+Groebner bases allow us to solve problems about polynomial
+ideals in an algorithmic or computational fashion .
+\\*
+
+\\*
+The main problems that we focus on are :\\
+\begin{enumerate}
+\item The existence of a finite generating set for polynomial ideals
+\item Membership of a given polynomial f in a polynomial ideal
+\end{enumerate}
+\\*
+In this document, we refer to a polynomial ring in n variables as $k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$.\\
+%\newpage
+\section{IDEALS AND VARIETIES}
+{\bf Definition 1.} A subset $I \subset k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$ is an ideal if it satisfies: 
+\begin{enumerate}
+\item $0 \in I$
+\item If $f, g \in I$ , then $f + g \in I$.
+\item If $f \in I$ and $h \subset k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$, then $hf \in I$.
+\end{enumerate}
+{\bf Definition 2.} Let k be a field, and let $f_{1} , . . . , f_{s}$ be polynomials in $k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$. Then we set\\ 
+    $V( f_{1} , . . . , f_{s} ) = \{(a_{1} , . . . , a_{s} ) \in k^{n} : f_{i} (a_{1} , . . . , a_{s} ) = 0$ for all $ 1 \leq i \leq s\}$. \\
+We call $V(f_{1} , . . . , f_{s})$ the affine variety defined by $f_{1} , . . . , f_{s}$. 
+\section{MONOMIAL}
+\\
+{ \bf Definition 1: }
+A monomial in $x_{1}, . . . , x_{n}$ is a product of the form 
+$x_{1}^{\alpha_{1}}.x_{2}^{\alpha_{2}}...x_{n}^{\alpha_{n}}$ , where all of $\alpha_{1}, \alpha_{2}, ...  ,\alpha_{n}$   are non-negative integers. The total degree of monomial is $\alpha_{1} + \alpha_{2} + ... + \alpha_{n}$.\\
+\\
+{ \bf Definition 2: }
+A polynomial f in $x_{1}, ... ,x_{n}$ with coefficients in k is a finite linear 
+combination (with coefficients in k) of monomials. We will write a polynomial f in the 
+form \\
+$f = \Sigma_{\alpha}$ $a_{\alpha}x^{\alpha}$ where the sum is over a finite number of n-tuples $\alpha = (\alpha_{1},...,\alpha_{n})$\\
+\section{ORDERING ON MONOMIALS}
+Ordering of monomials in $k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$.
+\\
+The ordering of terms in a polynomial is a key ingredient in various important algorithms like division algorithm in  k[x]  and row-reduction algorithm for a system of  polynomial equations.
+\\
+\\
+In this document , we focus on lexicographic ordering of terms in a polynomial.
+\\
+\\*
+{ \bf Definition 3: }
+Lexicographic ordering.
+\\
+Let $\alpha = (\alpha_{1},...,\alpha_{n})$ and $\beta = (\beta_{1},...,\beta_{n}) \in Z_{\geq 0}^{n}$
+\\
+We say $\alpha >_{lex} \beta$ if, in the vector difference $\alpha - \beta \in Z^{n}$
+the leftmost nonzero entry is positive.
+\\*
+\section{MONOMIAL IDEAL}
+{\bf Definition 4:}
+An ideal I $\subset  k[x_{1},x_{2},x_{3},...,x_{n}]$ is a monomial ideal if there is a subset A $\subset  Z^{n}$ (possibly infinite) such that I consists of all polynomials which are finite sums of the form $\Sigma_{a \in A} h_{\alpha}x^{\alpha}$  where $h_{\alpha} \in k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$
+\\*
+\\*
+{\bf Claim 1.}
+Let I = $<x^{\alpha}:\alpha \in A>$ be a monomial ideal. Then a monomial $x^{\beta}$ lies in I
+if and only if $x^{\beta}$ is divisible by $x^{\alpha}$ for some $\alpha \in A$.
+\\
+Proof:
+\\
+If $x^{\beta}$ is a multiple of $x^{\alpha}$ for some $\alpha \in A$, then $x^{\beta} \in I$ by the definition of ideal.
+\\
+Conversely, if $x^{\beta} \in I$, then $x^{\beta} = h_{i} x^{\alpha(i)}$ , where $h_{i} \in k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$ and $\alpha(i) \in A$.
+\\
+If we expand each $h_{i}$ as a linear combination of monomials, we see that every term on the right side of the equation is divisible by some $x^{\alpha(i)}$ . This is because the set A being a subset of $Z^{n}_{\geq 0}$ is well-ordered. Hence, well-ordering principle assures us of the existence of such a minimal element and we are done.\\
+\\*
+{\bf Theorem 1: Dickson’s Lemma} 
+Let $I = \{x^{\alpha} : \alpha \in A \subseteq  k[x_{1} ,x_{2} ,x_{3},...,x_{n}]\}$ be a monomial ideal. Then I can be written in the form I=$<x^{\alpha(1)},x^{\alpha(2)},...,x^{\alpha(s)}>$ ,where $\alpha(1),{\alpha(2)},...,{\alpha(s)} \in A$. In particular, I has a finite basis.\\
+(Note that the set A can be an infinite subset of Zn)\\\\*
+{\bf Proof :}
+We use the priciple of mathematical induction in this proof.\\
+Base case: n=1\\
+Here, I is generated by the monomials $x_{1}^{\alpha}$,where $\alpha \in A \subset Z^{n}_{\geq 0}$. Let $\beta \leq \alpha$ be the smallest element of $A \subset Z^{n}_{\geq 0}$.\\
+Again , well-ordering principle guarantees the existence of such an element.\\
+Then $\beta \leq \alpha$ for all $\alpha \in A$, so that $x_{1}^{\beta}$, divides all other generators $x_{1}^{\alpha}$. From here,\\\\*
+$I = < x_{1}^{\beta} >$ follows easily.\\
+Assume that $n > 1$ and that  the theorem holds for n-1.\\
+Without loss of generality , we may rename the variables as $x_{1},x_{2},x_{3},...,x_{n}$ as
+$x_{1},x_{2},x_{3},...,x_{n-1},y$ so that monomials in $k[x_{1},x_{2},x_{3},...,x_{n-1},y]$ can be written as 
+$x^{\alpha}y^{m}$,\\where $\alpha = (\alpha_{1},\alpha_{2},...,\alpha_{n-1}) \in Z^{n-1}_{\geq 0}$ and m $ \in  Z^{1}_{\geq 0}$.\\
+Suppose that $I \in k[x_{1},x_{2},x_{3},...,x_{n-1},y]$ is a monomial ideal A.\\
+and let $J \in k[x_{1},x_{2},x_{3},...,x_{n-1}]$.\\
+be the ideal generated by monomials $x^{\alpha}$ such that $x^{\alpha}y^{m}$ where $m \geq 0$ .\\
+Since J is a monomial ideal in $k[x_{1},x_{2},x_{3},...,x_{n-1}]$, our inductive hypothesis 
+implies that finitely many of the $x^{\alpha}$’s generate J , let
+$J = < x^{\alpha(1)},..., x^{\alpha(s)}>$.\\
+From this , it follows that for each i between 1 and s ,  $x^{\alpha(i)} y^{m_{i}} \in I$ for some 
+$m_{i} \geq 0$. Let m be the largest of the $m^{i}$ . Then, for each k between 0 and m − 1, consider 
+the ideal $J_{k} \in k[x_{1},x_{2},x_{3},...,x_{n-1}]$ generated by the monomials $x^{\beta}$ such that $x^{\beta} y^{k} \in I$ . \\
+The inductive hypothesis tells us that $J_{k}$ has a finite generating set of monomials, say \\
+$J_{k}= <x^{\alpha_{k}(1)},x^{\alpha_{k}(2)},...,x^{\alpha_{k}(s_{k})}>$\\
+\newpage
+\noindent {\bf Claim 2:}\\\\*
+I is generated by the monomials in the following list:\\
+from J : $x^{\alpha(1)}y^{m},x^{\alpha(2)}y^{m},...,x^{\alpha(s)}y^{m}$.\\
+\begin{tabbing}
+from $J_{0}$ \hspace{14 pt}\= $: x^{\alpha_{0}(1)}y^{0}$\=$,x^{\alpha_{0}(2)}y^{0}$\=$,...,x^{\alpha_{0}(s_{0})}y^{0}$.\\
+from $J_{1}$ \> $: x^{\alpha_{1}(1)}y^{1},x^{\alpha_{1}(2)}y^{1},...,x^{\alpha_{1}(s_{1})}y^{1}$.\\
+\> \vdots \> \vdots \> \vdots \\
+from $J_{m-1}$ \> $: x^{\alpha_{m-1}(1)}y^{m-1},x^{\alpha_{m-1}(2)}y^{m-1},...,x^{\alpha_{m-1}(s_{m-1})}y^{m-1}$.\\
+\end{tabbing}
+{\bf Proof :}  It suffices to prove that every monomial in I is divisible by one on this list as then claim 1 gives us the desired result.\\
+let $x^{\alpha} y^{p} \in I$ . If $p \geq m$, then $x^{\alpha} y^{p}$ is divisible by some $x^{α(i)}y^{m}$ by the construction of J . On the other hand, if $p \leq m - 1$, then $x^{\alpha} y^{p}$ is divisible by some $x^{\alpha_{p}(j)} y^{p}$ by the construction of $J_{p}$ .\\\\*\\*
+{\bf Claim 3: } Let $>$ be a relation on $Z^{n}$ satisfying: 
+\begin{enumerate}
+\item $>$ is a total ordering on $Z^{n}$.
+\item if $\alpha > \beta$ and $\gamma \in Z^{n}$, then $\alpha + \gamma > \beta + \gamma$.
+\end{enumerate}
+Then $>$ is well-ordering if and only if $\alpha \geq 0$ for all $\alpha \in Z^{n}$.\\\\*
+{\bf Proof :} Assume that $>$ forms a well-ordering and let $\alpha_{0}$ be the smallest element of $Z^{n}$. It clearly suffices to show that $\alpha_{0} \geq 0$.  if $0 > \alpha_{0}$ , then by hypothesis (2), we can add $\alpha_{0}$ to both sides to obtain $\alpha_{0} > 2\alpha_{0}$ , a contradiction\\ 
+Converse : Assuming that $\alpha_{0} \geq 0$ for all $\alpha in n$ , let $A \subset Z^{n}$ be nonempty
+It suffices to prove that A has a smallest element \\
+Since I = $<x^{\alpha}:\alpha \in A>$ is a monomial ideal, Dickson’s Lemma gives us  $\alpha(1),{\alpha(2)},...,{\alpha(s)} \in A$ so that  I=$<x^{\alpha(1)},x^{\alpha(2)},...,x^{\alpha(s)}>$ \\
+Without loss of generality , we may assume that $\alpha(1)<{\alpha(2)}<...<{\alpha(s)}$. \\\\*
+{\bf Claim 4:}  $\alpha(1)$ is the smalllest element of A\\\\*
+{\bf Proof :}  
+take $\alpha \in A$. Then $x^{\alpha} \in I=<x^{\alpha(1)},x^{\alpha(2)},...,x^{\alpha(s)}>$,\\
+so that by Claim 1, $x^{\alpha}$ is divisible by some $x^{\alpha(i)}$ . Let $\alpha = \alpha(i) + \gamma$ for \\
+some $\gamma \in n$. Then $\gamma \geq 0$ and hypothesis (2) imply that\\
+$\alpha = \alpha(i) + \gamma \geq \alpha(i) + 0 = \alpha(i) \geq \alpha(1)$.\\
+Thus, $\alpha(1)$ is the smalllest element of A and we are done.\\
+\newpage
+\section{HILBERT BASIS THEOREM}
+{\bf Definition :} Let I be an ideal of the polynomial ring in n variables.\\
+\begin{enumerate}
+\item Denote by LT(I) the set of leading terms of elements of I. Thus, LT(I) = \{$cx^{\alpha}$ : there exists $f \in I$ with $LT(f) = cx^{\alpha}$\}.
+\item Denote by $<LT(I)>$  the ideal generated by the elements of LT(I).
+\end{enumerate}
+{\bf Claim 1 :} Let $I \subset k[x_{1},x_{2},x_{3},...,x_{n}]$ be an ideal. 
+\begin{enumerate}
+\item LT(I) is a monomial ideal. 
+\item There exist $g_{1},...,g_{t} \in I$ such that $<LT(I)> = <LT(g_{1}),... , LT(g_{t} )>$.
+\end{enumerate}
+{\bf Proof :} \\
+(i)The leading monomials LM(g) of elements $g \in I-\{0\}$ generate the monomial ideal $LM(g) : g \in I - \{0\}$ 
+Since LM(g) and LT(g) differ by a nonzero constant,\\
+this ideal equals $LT(g): g \in I - \{0\}$= LT(I). Hence LT(I) is a monomial ideal.\\
+(ii) Since LT(I) is generated by the monomials LM(g) for $g \in I - \{0\}$, Dickson’s Lemma  tells us that $LT(I) =$ $<LM(g_{1} ), . . . , LM(g_{t} )>$ for finitely many $g_{1} , . . . , g_{t} \in I$ . Since $LM(g_{i} )$ differs from $LT(g_{i} )$ by a nonzero constant, it follows that $LT(I) =$ $<LT(g_{1}),... , LT(g_{t} )>$. and the claim is established.\\\\*
+{\bf Theorem (Hilbert Basis Theorem) :} Every ideal I $\subset  k[x_{1},x_{2},x_{3},...,x_{n}]$ has a finite generating set. That is, $I = <g_{1},...,g_{t}>$ for some $g_{1},...,g_{t} \in I$\\\\* 
+{\bf Proof :} If $I = \{0\}$, Take generating set to be $\{0\}$ .Otherwise I contains some non-zero polynomial.\\
+By claim 1, there exist $g_{1},...,g_{t} \in I$ such that $LT(I) =$ $<LT(g_{1}),... , LT(g_{t} )>$.\\\\*
+Claim :  $I = <g_{1},...,g_{t}>$.\\\\*
+{\bf Proof :} Clearly , $g_{1},...,g_{t} \subset I$ since each $g_{i} \in I$.\\
+Conversely, let $f \in I$ be any polynomial. If we apply the division algorithm to divide f by $g_{1},...,g_{t}$\\
+then we get an expression of the form\\
+$f = a_{1}g_{1} +a_{2}g_{2}+ ... + a_{t}g_{t} + r$ where no term of r is divisible by any of $LT(g_{1} ), . . . , LT(g_{t} )$.\\\\*
+{\bf Claim :} r = 0\\\\*
+{\bf Proof :} $r = f - a_{1}g_{1} -a_{2}g_{2}- ... - a_{t}g_{t} \in I$. If $r \neq 0$, then LT(r) $\in LT(I ) = <LT(g_{1} ), . . . LT(g_{t} )>$.\\
+Hence , LT(r) must be divisible by some $LT(g_{i} )$. , a contradiction.\\
+Hence , r=0 and the claim is established.\\
+This gives $f = a_{1}g_{1} +a_{2}g_{2}+ ... + a_{t}g_{t}$  hence $f\in <g_{1} , . . . , g_{t} >$\\
+Hence $I \subset <g_{1},...,g_{t}>$. And the proof is complete.\\
+The set $\{g_{1} , . . . , g_{t} \} \subset I$ is called a Groebner basis of I.\\\\*
+\newpage
+\noindent{\bf Claim :} Let   $I_{1} \subset I_{2} \subset I_{3} \subset ... $.\\ 
+be an ascending chain of ideals in $k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$. Then there exists a maximal ideal $I_{n}$.\\
+ie. No $I_{k}$ exists such that  $I_{n} \subset I_{k}$\\\\*
+{\bf Proof :}\\  
+consider the set $I = \bigcup_{i=1}^{\infty} I_{i}$ .\\ \\*
+{\bf Claim :} I is an ideal in $k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$.\\\\*
+{\bf Proof :} First, $0 \in I$ since $0 \in I_{i}$for every i.\\
+Next, if f, g $\in$ I, then by definition, f $\in I_{i}$ , and $g \in I_{j}$ for some i and j (possibly different). However, since the ideals $I_{i}$ form an ascending chain, without loss of generality, we may assume that $i \leq j$, then both f and g are in $I_{j}$ . Since $I_{j}$ is an ideal, the sum $f+g \in I_{j}$, hence, $\in I$ . Similarly, if $f \in I$ and $r \in k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$, then $f \in I_{i}$ for some i, and $r.f \in I_{i} \subset I$. Hence, I is an ideal and we are done.\\
+By Theorem , the ideal I must have a finite generating set: $I = <f_{1} , . . . , f_{s}>$\\
+Clearly , $\exists$ n : $f_{i} \in I_{n} \forall$ i. and we have established the existence of a maximal ideal.\\
+
+\section{An unique property of Gr\"{o}bner Bases}
+\\
+Every non-zero ideal $I \subset  k[x_{1},x_{2},x_{3},...,x_{n}]$ has a Gr\"{o}bner basis. In this section properties of Gr\"{o}bner bases will be introduced.\\
+Property 1 :\\
+Let $G=\{g_{1},...,g_{n}\}$ will be a Gr\"{o}bner basis for $I \subset  k[x_{1},x_{2},x_{3},...,x_{n}]$ and let $f \in k[x_{1},x_{2},x_{3},...,x_{n}]$ then 
+$\exists r \in k[x_{1},x_{2},x_{3},...,x_{n}]$, S.T
+\begin{enumerate}
+\item No term of r is divisible by any of $LT(g_{1}),...,LT(g_{t})$.
+\item $\exists g \in I : f=g+r$
+\item r is unique
+\end{enumerate} 
+{\bf Proof :} Dividing by $(g_{1},...,g_{n})$ we get $f = a_{1}g_{1}+...+a_{n}g_{n} + r$, where r satisfies (1). Also $a_{1}g_{1}+...+a_{n}g_{n} \in I$, and thus satisfies (2).\\
+Let $f=g+r = g'+r'$\\
+$\hspace{30 mm} \therefore  g-g'=r'-r \in I$\\
+$\hspace{30 mm} \Rightarrow LT(r'-r) \in <LT(I)> = < LT(g_{1}),...,LT(g_{n})>$\\
+This is impossible since no term of r and r' is divisible by $(LT(g_{1}),...,LT(g_{n}))$. This satisfies (3).\\
+\\*
+There is an important implication of this property. Its is that for any ideal $I \subset  k[x_{1},x_{2},x_{3},...,x_{n}]$, $f \in I$ iff the remainder when f is divided by the Groebner bases of I, is zero.\\\\*
+Also this property tells us that anfy $f \subset  k[x_{1},x_{2},x_{3},...,x_{n}]$ when divided by a Groebner bases G of an ideal I, gives remainder zero, irrespective of the order of division.\\
+\\*
+\newpage
+\noindent {\bf Some Definitions}
+\begin{description}
+\item[Definition 5] :- multideg(f) : Let $f =\Sigma_{\alpha} a_{\alpha} x^{\alpha}$ be a nonzero polynomial in $k[x_{1},x_{2},x_{3},...,x_{n}]$ and let $>$ be a monomial order.
+\begin{center}
+$multideg(f)= max(\alpha \in Z_{\geq 0}^{n} : a_{\alpha} \neq 0 ).$
+\end{center}
+\item[Definition 6] :- We will write $ \overline{f}^{F}$ for the remainder of f by the ordered s-tuple $F=(f_{1},f_{2},...,f_{s})$.
+\item[Definition 7] :- Let $f,g \in  k[x_{1},x_{2},x_{3},...,x_{n}]$ be two non zero polynomials.
+\begin{enumerate}
+\item $\exists \gamma \in Z_{\geq 0}^{n}$, ST $\gamma_{i}=max(\alpha_{i},\beta_{i})$, where $\alpha$=multideg(f) and $\beta$ = multideg(g). here $x^{\gamma}$ is called LCM of LCM(f) and LCM(g).
+\item we define s-polynomial as $s(f,g) = \frac{x^{\gamma}}{LT(f)}.f-\frac{x^{\gamma}}{LT(g)}.g$ 
+\end{enumerate}
+\end{description}
+
+\section{SCHWARTZ-ZIPPEL LEMMA}
+Schwartz-Zippel Lemma is a tool commonly used for polynomial identity testing, i.e. In the problem of determining whether a given multivariate polynomial is the zero polynomial (or identically equal to zero).\\
+{\bf Theorem:- (Schwartz, Zippel).} Let
+\begin{center}
+$p \in k[x_{1} ,x_{2} ,x_{3},...,x_{n}]$\\
+\end{center}
+be a non-zero polynomial of degree $d \geq 0$ over a field F. Let $s \subset F$ and |S| is finite. Let $r_{1},r_{2},....r_{n}$ be selected randomly from S. Then 
+
+\begin{center}
+$Pr[P(r_{1},r_{2},....r_{n})=0] \leq \frac{d}{|S|} \hspace{30 pt} -(1)$
+\end{center}
+{\bf Proof :} When n=1, P can have atmost d roots.\\
+Thus (1) holds.\\
+Let us assume the theorem holds for n-1 variables.\\ 
+Now, $P(x_{1},...,x_{n})=  \Sigma_{i=0}^{d} x_{1}^{i} P_{i}(x_{2},...,x_{n})$.\\
+let us take the largest i for which $p_{i} \neq 0 $ identically\\
+By inductive Hypothesis,\\
+$Pr[P_{i}(r_{2},r_{3},....r_{n})=0] \leq \frac{d-1}{|S|},$ where $(r_{2},...r_{n}) \in S^{n}$\\
+Also $Pr[P(r_{1},r_{2},....r_{n})| P_{i}(r_{2},r_{3},....r_{n}) \neq 0] \leq \frac{i}{|S|}$.\\
+Let A $\equiv P(r_{1},r_{2},....r_{n}) = 0 $\\
+Let B $\equiv P_{i}(r_{2},r_{3},....r_{n}) = 0 $\\
+\begin{tabbing}
+$Pr[A] $\=$ = Pr[A \cap B] +Pr[A \cap B'] $\\
+\> $= Pr[A].Pr[A|B]+Pr[B'].Pr[A|B']$\\
+\> $\leq Pr[B]+Pr[A|B']$\\
+\> $\leq \frac{d-i}{|S|} + \frac{i}{|S|} = \frac{d}{|S|}$
+\end{tabbing}
+\section{BUCHBERGER'S ALGORITHM}
+Here we discuss an algorithm ( due to Buchberger), which constructs a Groebner bases for an ideal $I = <f_{1},f_{2},...,f_{s}>$, in a finite number of steps. It proves an important fact, that the problem of comstructing Groebner bases is decidable.\\
+The Algorithm\\
+\begin{tabbing}
+BUCHB\= ERGER\= (F=$f_{1}$\=$,f_{2},...,f_{s}$)\\
+\{\\
+\> G=F\\
+\> do\\
+\> $\{$\\
+\>\> G'=G\\
+\>\> FOR each pair $\{p,q\}, p\neq q$ in G'\\
+\>\> do\\
+\>\> \{\\
+\>\>\> $S= \overline{S(p,q)}^{G'}$\\
+\>\>\> if S$\neq$0 then G=G $\bigcup \{S\}$\\
+\>\> \}\\
+\> \}while(G $\neq$ G')\\
+\> return G\\
+\}\\
+\end{tabbing}
+{\bf Proof :} We first prove the invariant that $g \in I$ holds after each step of the algorithm. This is because $p, q \in I$ at each step and so does $\overline{S(p,q)}^{G'}$. We also note that G contains the given basic F of I so that G is also a basis of I.\\
+The algorithm terminates when for all (p,q) pairs in G, $\overline{S(p,q)}^{G'}=0$ . Thus we have to prove that when this condition is true, G is a Groebner basis.  This condition is also known as Buchberger's criterion. We will prove it in the next section.\\
+It remains to prove that the algorithm terminates. We will see that after each pass,$G' \subset G$  and thus $<LT(G')> \subset <LT(G)>$.\\
+Furthermore, if G $\neq$ G', we claim that $<LT(G')>$ is strictly smaller than $<LT(G)>$. To see this, we notice that $r=\overline{S(p,q)}^{G'} \notin <LT(G')>$ for LT(r) is not divisible by elements of $<LT(G')>$. But $r \in <LT(G)>$.\\
+Thus, the size of the ideal $<LT(G)>$ strictly increases at each step. Now , we know that the size of the Groebner basis is finite (say m). Also, size of F is also finite and less than that of the Groebner bases. Also at each step, we strictly increase the size of the ideal. Thus after a finite number of steps, the size of the ideal will be equal to the size of the Groebner basis (ascending chain condition). Thus the algorithm terminates.
+\newpage
+\section{PROOF OF BUCHBERGER'S CRITERION}
+Buchberger's criterion states that for a polynomial ideal I, a basis $G=$ $\{g_{1},g_{2}...,g_{t}\}$ is a Gr\"{o}ebner basis for I iff for all pairs $i\neq j$ , the remainder on division of $S(g_{i},g_{j})$ by G (listed in some order) is zero.\\
+{\bf Proof}\\
+$\Rightarrow$ : Since  $ S(g_{i},g_{j})$ $ \in I$ amd G is a Groebner basis, the remainder on division by G is zero, due to the inherent property of G.\\
+$\Leftarrow$ : Let $ f\in I$  be a non-zero polynomial.\\
+As $f \in I$ , $ f= \Sigma^{t}_{i=1} h_{i}g_{i}$ ------(1)\\
+Let m(i) = $multideg(h_{i}g_{i})$\\
+Also, let $\delta$ = max(m(1),m(2) . . . .m(t))\\
+It is apparent that multideg(f) $leq \delta$ .\\
+now if multideg(f) $= \delta$, then multideg(f)= max(multideg($h_{i}g_{i}$) and thus\\ 
+$LT(f) \in\ <LT(g_{1}), LT(g_{2},.... LT(g_{t}))>$. Thus G is a Groebner basis.\\
+Now we have to prove the case if multideg(f) $< \delta$.\\
+Let us assume it is true.\\
+Let us write\\
+$f= \Sigma_{m(i) = \delta} h_{i}g_{i} + \Sigma_{m(i) < \delta} h_{i}g_{i}$.\\\\*
+$f= \Sigma_{m(i) = \delta} LT(h_{i})g_{i} + \Sigma_{m(i) = \delta} (h_{i}-LT(h_{i}))g_{i} + \Sigma_{m(i) < \delta} h_{i}g_{i}$.\\\\*
+\\*
+The multidegree of the second and third terms in the RHS is $< \delta$. Thus if multideg(f)$< \delta$, then some cancellation occurs in the first term to produce the following result.\\
+Now, $\Sigma_{m(i)=\delta} LT(h_{i})g_{i} =  \Sigma_{m(i)=\delta} c_{i}x^{\alpha(i)}g_{i}$\\\\*
+now, let $\alpha_{i} = LC(x^{\alpha(i)}g_{i})$.\\\\*
+and $P_{i}=\frac{x^{\alpha(i)}g_{i}}{d_{i}}$\\\\*
+$\Sigma_{1}^{s} c_{i}x^{\alpha(i)}g_{i}= \Sigma_{1}^{s} c_{i}P_{i}d_{i}$\\\\*
+$=c_{1}d_{1}(P_{1}-P_{2})+(c_{1}d_{1}+c_{2}d_{2})(P_{2}-P_{3})+...+(c_{1}d_{1}+...+c_{s-1}d_{s-1})(P_{s-1}-P_{s})$.-----(2)\\ \\*
+Now, as the multideg of the first term is $< \delta , \Sigma^{s}_{i=1}(c_{i}d_{i})=0$.\\\\*
+thus the last term of the equation (2) cancels out.\\\\*
+Again. $S(x^{\alpha(i)}g_{i},x^{\alpha(j)}g_{j})= \frac{x^{\delta}}{LT(x^{\alpha(i)}g_{i})}.x^{\alpha(i)}g_{i} -\frac{x^{\delta}}{LT(x^{\alpha(j)}g_{j})}.x^{\alpha(j)}g_{j}  $\\\\*
+$= P_{i}-P_{j}$------------------------------------- (3)\\\\*
+this is also equal to \\
+$\frac{x^{\delta}}{x^{\alpha(i)}LT(g_{i})}.x^{\alpha(i)}g_{i} -\frac{x^{\delta}}{x^{\alpha(j)}LT(g_{j})}.x^{\alpha(j)}g_{j} $\\\\*
+$=x^{\delta -\gamma_{ij}}S(g_{j},g_{k})$-----------------------------(4)\\\\*
+Now, $\Sigma c_{i}x^{\alpha(i)}g_{i} = \Sigma c_{jk} S(x^{\alpha(j)}g_{j},x^{\alpha(k)}g_{k})$\\\\*
+from (2) and (3), as $P_{i}-P_{j}$ is essentially a particular s-polynomial.\\\\*
+$\Sigma_{m(i)=\delta} LT(h_{i})g_{i} = \Sigma c_{jk} x^{\delta - \gamma_{jk}} S(g_{j},g_{k})$\\\\*
+Now, as the remainder of $S(g_{j},g_{k})$ when divided by G is zero.(our assumptions).\\\\*
+$S(g_{j},g_{k})= \Sigma_{i=1}^{t} a_{ijk}g_{i}$.\\\\*
+Also $ multideg(a_{ijk}.g_{i}) \leq multideg(S(g_{j},g_{k}))$ by divition algorithm.\\\\*
+Also $ multideg(x^{\delta- \gamma_{jk}}S(g_{j},g_{k}))<\delta$\\\\*
+$\Sigma_{m(i)=\delta} LT(h_{i})g_{i} = \Sigma c_{jk} x^{\delta - \gamma_{jk}} S(g_{j},g_{k})$\\\\*
+$= \Sigma c_{jk} ( \Sigma b_{ijk}g_{i} )= \Sigma_{i} \tilde{h}_{i}g_{i}$------(5)\\\\*
+where $multideg(\tilde{h}_{i}g_{i}) < \delta $\\\\*
+Subtituting (4) in (5), we get a new expression of f with a lesser value of $\delta$.
+This is because all the multideg(f) is less than $\delta$. Thus for any $\delta$ , if multideg(f) is less than $\delta$, we can use S-polynomial to get a lesser value than $\delta$. Now as the multideg(f) if finite, we can use this method iteratively to to reach a particular $\delta_{min}$, such that multideg(f) = $\delta_{min}$. As proved earlier, in this case G is a Groebner basis.
+Thus we have completely proved the Buchberger's algorithm. Even though this algorithm proved the computability of Groebner bases, it amy take a long time to terminate. The time complexity of the algorithm is doubly exponential in the input data, which implies that its worst case behavior may be very slow. As the size of the Groebner basis can be very large, the algorithm has large storage requirements.
+
+\newpage
+\section{Applications of Gr\"{o}bner basis}
+One can view Gr\"{o}bner basis as a multivariate, non-linear generalization of:
+\begin{enumerate}
+\item The Euclidean algorithm for computation of univariate greatest common divisors,
+\item Gaussian elimination for linear systems, and
+\item integer programming problems.
+\end{enumerate}
+\subsection{Solving Multivariate Polynomial Equations}
+Gr\"{o}bner basis can be used to solve a set of multivariate polynomial equations.\\
+In particular, this gives us a method for solving simultaneous polynomial equations. If there are only finitely many solutions (over an algebraic closure of the field in which the coefficients lie) to the system of equations.\\
+$\{(f_1[x_1, ..., x_n]= a_1) ,(f_2[x_1, ..., x_n]= a_2), ..., (f_m[x_1, ..., x_n] = a_m)\}$
+We should be able to manipulate these equations to get something of the form\\
+$g(x_n) = b$.\\
+The elimination property says that if we compute a Gr\"{o}bner basis for the ideal generated by ${f_1 – a_1, ..., f_m – a_m}$ relative to the right ordering, then we can find the polynomial g as one of the elements of our basis. Furthermore, (taking k = n - 1) there will be another polynomial in the basis involving only $x_{n - 1}$ and $x_n$, so we can take our possible solutions for $x_n$ and find corresponding values for $x_{n - 1}$. This lifting continues all the way up until we've found the values of all the variables.
+\subsection{Applications of grobner basis to mathematical chemistry}
+Consider the special case of the compound cyclohexane ( $C_{6}H_{12}$)\\
+let $a_{1}, a_{2}, ..., a_{6}$ denote the bond vectors in a given conformation of cyclohexane .\\
+the fixed bond length and angles give us\\
+$ ||ai|| =a_{i,1}^{2} + a_{i,2}^{2}+a_{i,3}^{2} =1$ for i = 1,2.....6\\
+Also, $<a_{i}.a_{j}> = a_{i,1} a_{j,1} + a_{i,2} a_{j,2} + a_{i,3} a_{j,3} = \cos \alpha = -1/3$\\ 
+Furthermore , we have\\
+        $a_{1}+a_{2}+a_{3}+a_{4}+a_{5}+a_{6} =0$\\
+they can be expanded to three co-ordinates.\\
+Also, following equations fix the position of structure in space :\\
+$a_{1,1} =0$, $a_{1,2} =0$ and $a_{2,1} =0$\\ 
+Certainly these equations can be solved by using Grobner bases . From these solutions we can analyze the chair form and twisted form of cyclohexane.\\
+The idea can be extended to higher classes of chemical compounds as well .\\
+\newpage
+\section{CONCLUSION AND FUTURE WORK}
+\\
+\indent \indent \indent In our project, we have studied about ideals, varieties and affine space. We have defined monomial ideals and lexical ordering. We have written proofs for Dickson's lemma and Hilbert Basis theorem. We have defined Gr\"{o}bner basis and mentioned some of its unique properties. We have also studied Buchberger's algorithm. We have endeavoured to write the proofs for some of the theorems in a better and more lucid manner.\\
+
+\indent \indent We note that the Buchberger's algorithm has a time complexity which is doubly exponential in the input data, which implies that its worst case behavior may be very slow. Various new algorithms have been proposed, such as Faugere's F-4 and F-5 , which computes the Gr\"{o}bner basis of an ideal. These algorithms use the same mathematical principles as the Buchberger's algorithm, but are faster.\\
+
+\indent  \indent In the future, we will try to implement and analyse Faugere's F-4 and F-5 algorithms and compare it to Buchberger's algorithm. This will give us a deeper insight and we can then look to find further improvements for the same.\\
+
+ 
+\newpage
+\begin{thebibliography}{99}
+\bibitem{cox}
+	David Cox, John Little, and Donal O’Shea. \textsl{Ideals, Varieties, and
+    Algorithms : An Introduction to Computational Algebraic Geometry and
+    Commutative Algebra}. (Undergraduate Texts in Mathematics).
+    Springer, July 2005.
+\bibitem{}
+	Stanislav Bulygin and Ruud Pellikaan. \textsl{Decoding error-correcting codes with Gr\"{o}bner bases, Proceedings of 28th Symposium on Information Theory in the Benelux, Enschede,} May 24-25, pp. 3-10, 2007
+\bibitem{kreuzer}
+	Martin Kreuzer. \textsl{Solving polynomial equations using Gr\"{o}bner basis. }
+\bibitem{Robbiano}
+	Lorenzo Robbiano. \textsl{Solving Polynomial Equations.}
+\bibitem{lecture}
+	\textsl{Gr\"{o}bner Bases and Applications,  London Mathematical Society Lecture Note Series.}
+\bibitem{boer}
+	Mario de Boer and Ruud Pellikaan..\textsl{Gr\"{o}bner bases for error-correcting codes and their decoding.}
+
+\end{thebibliography}
+
+%\bibliographystyle{plain}
+%\bibliography{mini.bib}
+
+\end{document}
